@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<base target="_top">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>Quick Start - Leaflet</title>
+	
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+
+	<style>
+		html, body {
+			height: 100%;
+			margin: 0;
+  background: #6d9930;
+		}
+		.leaflet-container {
+			height: 400px;
+			width: 600px;
+			max-width: 100%;
+			max-height: 100%;
+		}
+        
+        .pixelated {
+        image-rendering: pixelated;
+        }
+	</style>
+
+	
+</head>
+<body>
+
+
+
+<div id="map" style="width: 100%; height: 100%;"></div>
+<script>
+
+    
+  function xy(x, y) {
+    return L.latLng(y, -x);  // When doing xy(x, y);
+  }
+
+	const map = L.map('map',{
+      crs: L.CRS.Simple,
+      minZoom: 0,
+      maxZoom: 3,
+      zoomDelta: 0.3,
+      zoomSnap: 0,
+      center: [0.0, 0.0],
+      attributionControl: false
+    });
+    map.setView(this.xy(90, -960), 2);
+
+	const tiles = L.tileLayer('world/{z}/{x}/{y}.png',{
+          tileSize: 256 * L.CRS.Simple.scale(1),
+          minNativeZoom: 1,
+          maxNativeZoom: 1,
+          className: "pixelated"
+        }).addTo(map);
+
+</script>
+
+
+
+</body>
+</html>
